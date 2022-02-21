@@ -42,7 +42,7 @@ const validateUser = (req, res, next) => {
 app.validateUser = validateUser;
 
 //routes
-app.use('/users',validateUser, usersRouter);
+app.use('/users', validateUser, usersRouter);
 app.use('/auth', authRouter);
 
 
@@ -59,7 +59,9 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+
+  // modication of how is the error sent
+  res.json({ code: err.code, msg: err.message });
 });
 
 module.exports = app;

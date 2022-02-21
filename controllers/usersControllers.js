@@ -2,16 +2,22 @@ const usersModel = require("../models/userModels")
 const jwt = require("jsonwebtoken")
 
 module.exports = {
-    create: (req, res, next) => {
+    create: async (req, res, next) => {
         console.log(req.body)
-        const user = new usersModel({
-            full_name: req.body.full_name,
-            username: req.body.username,
-            password: req.body.password,
-            email: req.body.email
-        })
-        user.save();
-        res.json(user);
+        try {
+            const user = new usersModel({
+                full_name: req.body.full_name,
+                username: req.body.username,
+                password: req.body.password,
+                email: req.body.email
+            })
+            const document = await user.save();
+            res.status(201).json(document);
+        } catch (e) {
+            console.log(e)
+            next(e)
+        }
+
     },
     validate: async (req, res, next) => {
         console.log(req.body)
@@ -21,7 +27,7 @@ module.exports = {
             if (user.password == req.body.password) {
                 //Generación de token
                 const token = jwt.sign({ userId: user._id }, req.app.get("secretKey"));
-                res.json({ token: token });
+                res.status(200).json({ token: token });
             } else {
                 res.json({ message: "Password incorrecto" })
             }
@@ -31,21 +37,21 @@ module.exports = {
     },
     getAll: async (req, res, next) => {
         const users = await usersModel.find({});
-        res.json(users)
+        res.status(200).json(users)
     },
     getById: async (req, res, next) => {
         console.log(req.params.id);
         const user = await usersModel.findById(req.params.id);
-        res.json(user);
+        res.status(200).json(user);
     },
     update: async (req, res, next) => {
         const user = await usersModel.findOneAndUpdate({ _id: req.params.id }, req.body);
         console.log(req.body);
-        res.json(user);
+        res.status(201).json(user);
     },
     delete: async (req, res, next) => {
         const user = await usersModel.deleteOne({ _id: req.params.id });
         console.log(req.params.id);
-        res.json(user);
+        res.status(201).json(user);
     }
 }
