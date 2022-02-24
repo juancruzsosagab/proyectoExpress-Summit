@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/usersSummit"), {userNewUrlParser:true}, (error)=>{
+
+mongoose.connect("mongodb://localhost/"+process.env.MONGODB_DATABASE), {userNewUrlParser:true}, (error)=>{
     if(error){
         throw error;
     }else{

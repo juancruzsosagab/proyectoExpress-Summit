@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+require('dotenv').config()
 
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
