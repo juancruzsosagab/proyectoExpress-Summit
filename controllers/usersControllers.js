@@ -26,12 +26,12 @@ module.exports = {
                 if (user.password == req.body.password) {
                     //Generación de token
                     const token = jwt.sign({ userId: user._id }, req.app.get("secretKey"));
-                    res.status(200).json({ token: token });
+                    res.status(200).json({ message: "Ok", token: token });
                 } else {
-                    res.json({ message: "Password incorrecto" })
+                    res.status(401).json({ message: "Password incorrecto" })
                 }
             } else {
-                res.json({ message: "No existe el usuario" })
+                res.status(400).json({ message: "No existe el usuario" })
             }
         } catch {
             next(e)

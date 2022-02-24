@@ -15,7 +15,6 @@ var app = express();
 // Enable All CORS Requests, i had a problem with request
 app.use(cors())
 
-
 // SecretKey for jwt
 app.set('secretKey', "summit2022")
 
