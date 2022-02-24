@@ -3,13 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const jwt = require('jsonwebtoken')
-
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 
 var app = express();
+
+
+// Enable All CORS Requests, i had a problem with request
+app.use(cors())
+
 
 // SecretKey for jwt
 app.set('secretKey', "summit2022")

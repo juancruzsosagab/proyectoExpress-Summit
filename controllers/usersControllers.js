@@ -17,41 +17,59 @@ module.exports = {
             console.log(e)
             next(e)
         }
-
     },
     validate: async (req, res, next) => {
         console.log(req.body)
-        const user = await usersModel.findOne({ username: req.body.username });
-        console.log(user);
-        if (user) {
-            if (user.password == req.body.password) {
-                //Generación de token
-                const token = jwt.sign({ userId: user._id }, req.app.get("secretKey"));
-                res.status(200).json({ token: token });
+        try {
+            const user = await usersModel.findOne({ username: req.body.username });
+            if (user) {
+                if (user.password == req.body.password) {
+                    //Generación de token
+                    const token = jwt.sign({ userId: user._id }, req.app.get("secretKey"));
+                    res.status(200).json({ token: token });
+                } else {
+                    res.json({ message: "Password incorrecto" })
+                }
             } else {
-                res.json({ message: "Password incorrecto" })
+                res.json({ message: "No existe el usuario" })
             }
-        } else {
-            res.json({ message: "No existe el usuario" })
+        } catch {
+            next(e)
         }
     },
     getAll: async (req, res, next) => {
-        const users = await usersModel.find({});
-        res.status(200).json(users)
+        try {
+            const users = await usersModel.find({});
+            res.status(200).json(users);
+        } catch {
+            next(e);
+        }
     },
     getById: async (req, res, next) => {
         console.log(req.params.id);
-        const user = await usersModel.findById(req.params.id);
-        res.status(200).json(user);
+        try {
+            const user = await usersModel.findById(req.params.id);
+            res.status(200).json(user);
+        } catch {
+            next(e);
+        }
     },
     update: async (req, res, next) => {
-        const user = await usersModel.findOneAndUpdate({ _id: req.params.id }, req.body);
         console.log(req.body);
-        res.status(201).json(user);
+        try {
+            const user = await usersModel.findOneAndUpdate({ _id: req.params.id }, req.body);
+            res.status(201).json(user);
+        } catch {
+            next(e)
+        }
     },
     delete: async (req, res, next) => {
-        const user = await usersModel.deleteOne({ _id: req.params.id });
         console.log(req.params.id);
-        res.status(201).json(user);
+        try {
+            const user = await usersModel.deleteOne({ _id: req.params.id });
+            res.status(201).json(user);
+        } catch {
+            next(e)
+        }
     }
 }
