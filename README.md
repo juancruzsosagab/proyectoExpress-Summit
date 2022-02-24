@@ -10,6 +10,7 @@ Cors: https://www.npmjs.com/package/cors
 Jsonwebtoken: https://www.npmjs.com/package/express-jwt
 Mongoose: https://mongoosejs.com/docs/
 Nodemon: https://www.npmjs.com/package/nodemon
+Dotenv: https://www.npmjs.com/package/dotenv
 
 
 
