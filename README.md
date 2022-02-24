@@ -2,7 +2,7 @@
 
 
 ## Descripción
-Este proyecto consiste en dos páginas. Una es una vista para loguearse y la otra es la vista de "éxito". Para poder loguearse, primero se debe crear un usuario vía API (proyecto express), y luego con las credenciales ingresar. Si uno intenta loguearse con un usuario incorrecto o con un password incorrecto, se reflejará en la respuesta del request el status correspondiente, junto con el error renderizado en la vista de login.
+Este proyecto consiste en una pequeña API REST que tiene algunos servicios. Creación de usuario, validación, consulta de un usuario específico, consultade todos los usuarios, modificación y baja.  
 
 
 ## Starting
@@ -28,7 +28,7 @@ AND
 ### `npm install`
 
 ```
-Crea una base de datos que se llame `usersSummit` o modifica el nombre en el archivo .env del directorio
+Crear una base de datos que se llame `usersSummit` o modifica el nombre en el archivo .env del directorio
 ```
 
 ## Construido con 🛠️
@@ -49,13 +49,13 @@ En el terminal, run:
 
 ### `mongod`
 
-Luego conectar a través MongoDBCompass
+Luego conectar a través de MongoDBCompass
 
 En el directorio del proyecto, run:
 
 ### `nodemon npm start`
 
-Sigue la siguiente documentación con sus ejemplos para consumir los servicios de la api [DOCUMENTACIÓN API](https://documenter.getpostman.com/view/12727307/UVkjwy4u) 
+Seguir la siguiente documentación con sus ejemplos para consumir los servicios de la api [DOCUMENTACIÓN API](https://documenter.getpostman.com/view/12727307/UVkjwy4u) 
 
 
 ## Autor ✒️
