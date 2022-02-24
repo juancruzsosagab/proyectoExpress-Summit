@@ -15,7 +15,7 @@ module.exports = {
             res.status(201).json(document);
         } catch (e) {
             console.log(e)
-            next(e)
+            next(e);
         }
     },
     validate: async (req, res, next) => {
@@ -33,15 +33,15 @@ module.exports = {
             } else {
                 res.status(400).json({ message: "No existe el usuario" })
             }
-        } catch {
-            next(e)
+        } catch (e) {
+            next(e);
         }
     },
     getAll: async (req, res, next) => {
         try {
             const users = await usersModel.find({});
             res.status(200).json(users);
-        } catch {
+        } catch (e) {
             next(e);
         }
     },
@@ -50,7 +50,7 @@ module.exports = {
         try {
             const user = await usersModel.findById(req.params.id);
             res.status(200).json(user);
-        } catch {
+        } catch (e) {
             next(e);
         }
     },
@@ -59,8 +59,8 @@ module.exports = {
         try {
             const user = await usersModel.findOneAndUpdate({ _id: req.params.id }, req.body);
             res.status(201).json(user);
-        } catch {
-            next(e)
+        } catch (e) {
+            next(e);
         }
     },
     delete: async (req, res, next) => {
@@ -68,8 +68,8 @@ module.exports = {
         try {
             const user = await usersModel.deleteOne({ _id: req.params.id });
             res.status(201).json(user);
-        } catch {
-            next(e)
+        } catch (e) {
+            next(e);
         }
     }
 }
