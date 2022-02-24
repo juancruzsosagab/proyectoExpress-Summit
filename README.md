@@ -2,7 +2,7 @@
 
 
 ## Descripción
-Este proyecto consiste en una pequeña API REST que tiene algunos servicios. Creación de usuario, validación, consulta de un usuario específico, consultade todos los usuarios, modificación y baja.  
+Este proyecto consiste en una pequeña API REST que tiene algunos servicios. Creación de usuario, validación, consulta de un usuario específico, consulta de todos los usuarios, modificación y baja.  
 
 
 ## Starting
