@@ -60,4 +60,4 @@ Seguir la siguiente documentación con sus ejemplos para consumir los servicios 
 
 ## Autor ✒️
 
-* **Juan Cruz Sosa Gabrielli** - *Desarrollo* - [JuanCruz](https://github.com/juancruzsosagab)
+* **Juan Cruz Sosa Gabrielli** - *Desarrollo* - [Juan Cruz](https://github.com/juancruzsosagab)
